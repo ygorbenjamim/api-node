@@ -1,6 +1,6 @@
 const validateFieldTitle = (req, res, next) => {
   const { body } = req;
-  if (!body.title)
+  if (!body.name)
     return res
       .status(400)
       .json({ message: "O título é obrigatório e não pode ser vazio." });

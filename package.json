@@ -5,7 +5,7 @@
   "author": "Ygor Benjamim",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon ./src/server.js"
+    "start": "nodemon ./src"
   },
   "dependencies": {
     "dotenv": "^16.0.3",

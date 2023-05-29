@@ -1,24 +1,24 @@
-const tasksModel = require("../models/tasks.model");
+const taskRepository = require("../repositories/tasks.repository");
 
 const getAll = async (_req, res) => {
-  const tasks = await tasksModel.getAll();
+  const tasks = await taskRepository.getAll();
   return res.status(200).json(tasks);
 };
 
 const createTask = async (req, res) => {
-  const createdtask = tasksModel.createTask(req.body);
+  const createdtask = await taskRepository.createTask(req.body);
   return res.status(201).json(createdtask);
 };
 
 const deleteTask = async (req, res) => {
   const { id } = req.params;
-  await tasksModel.deleteTask(id);
+  await taskRepository.deleteTask(id);
   return res.status(204).json();
 };
 
 const updateTask = async (req, res) => {
   const { id } = req.params;
-  await tasksModel.updateTask(id, req.body);
+  await taskRepository.updateTask(id, req.body);
   return res.status(204).json();
 };
 

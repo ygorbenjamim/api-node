@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 
 const auth = async (req, res) => {
   const { user, password } = req.body;
-
   if (user == "ygor" && password == "admin") {
     const token = jwt.sign({ userId: "abc" }, process.env.SECRET_KEY, {
       expiresIn: 1000,

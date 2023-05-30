@@ -2,9 +2,9 @@ Fluxo de camadas
 
 router -> controller -> service -> repository -> service -> controller -> router
 
-Controller -> Responsável por qualquer regra de negócio
+Controller -> Responsável por intermediar a interface com o service
 middleware -> Responsável pelas validações
-Service -> Trata e formata os dados ou faz algum tratamento
+Service -> Responsável por tratar e formata os dados, fazer algum tratamento e por qualquer regra de negócio
 Repository -> Acessa diretamente o banco de dados (camada mais baixa)
 
 ```sql

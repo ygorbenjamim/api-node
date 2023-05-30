@@ -2,7 +2,10 @@ Fluxo de camadas
 
 router -> controller -> service -> repository -> service -> controller -> router
 
-Service -> Trata e formata os dados
+Controller -> Responsável por qualquer regra de negócio
+middleware -> Responsável pelas validações
+Service -> Trata e formata os dados ou faz algum tratamento
+Repository -> Acessa diretamente o banco de dados (camada mais baixa)
 
 ```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'nova_senha';

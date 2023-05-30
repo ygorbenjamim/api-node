@@ -1,26 +1,25 @@
-// Responsável por formatar os dados
 // Em desenvolvimento
 
 const tasksRepository = require("../repositories/tasks.repository");
 
-const getAll = async (res) => {
-  const tasks = await tasksRepository.getAll();
-  return res.status(200).json(tasks);
+const getAll = async () => {
+  return await tasksRepository.getAll();
 };
 
-const createTask = async (body, res) => {
-  const createdtask = await tasksRepository.createTask(body);
-  return res.status(201).json(createdtask);
+const createTask = async (body) => {
+  const { name } = body;
+  return await tasksRepository.createTask(name);
 };
 
-const deleteTask = async (id, res) => {
-  await tasksRepository.deleteTask(id);
-  return res.status(204).json();
+const deleteTask = async (id) => {
+  const { affectedRows } = await tasksRepository.deleteTask(id);
+  return { affectedRows };
 };
 
-const updateTask = async (id, body, res) => {
-  await tasksRepository.updateTask(id, body);
-  return res.status(204).json();
+const updateTask = async (id, body) => {
+  const { name, status } = body;
+  const { affectedRows } = await tasksRepository.updateTask(id, name, status);
+  return { affectedRows };
 };
 
 module.exports = {

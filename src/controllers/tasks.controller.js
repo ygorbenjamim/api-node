@@ -12,14 +12,14 @@ const createTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
   const { id } = req.params;
-  await taskRepository.deleteTask(id);
-  return res.status(204).json();
+  const { affectedRows } = await taskRepository.deleteTask(id);
+  return res.status(200).json({ affectedRows });
 };
 
 const updateTask = async (req, res) => {
   const { id } = req.params;
-  await taskRepository.updateTask(id, req.body);
-  return res.status(204).json();
+  const { affectedRows } = await taskRepository.updateTask(id, req.body);
+  return res.status(204).json({ affectedRows });
 };
 
 module.exports = {

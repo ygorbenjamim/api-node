@@ -1,5 +1,4 @@
 const connection = require("../configs/database");
-//const Task = require("../models/tasks.models");
 
 const getAll = async () => {
   const query = "SELECT * FROM tasks;";
@@ -7,9 +6,8 @@ const getAll = async () => {
   return tasks;
 };
 
-const createTask = async (task) => {
+const createTask = async (name) => {
   const query = "INSERT INTO tasks (name, status) VALUES (?, ?);";
-  const { name } = task;
   const [createdTask] = await connection.execute(query, [name, "pendente"]);
   return { insertId: createdTask.insertId };
 };
@@ -20,9 +18,8 @@ const deleteTask = async (id) => {
   return removeTask;
 };
 
-const updateTask = async (id, task) => {
+const updateTask = async (id, name, status) => {
   const query = "UPDATE tasks SET name = ?, status = ? WHERE id = ?;";
-  const { name, status } = task;
   const [updatedTask] = await connection.execute(query, [name, status, id]);
   return updatedTask;
 };

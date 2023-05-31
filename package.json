@@ -15,7 +15,9 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^9.0.2",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mysql2": "^3.3.3"
   }
 }

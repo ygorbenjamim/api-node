@@ -1,6 +1,10 @@
 import express from "express";
 
+// Middlewares
+import { verifyToken } from "../middlewares/auth.middleware";
+
 // Controllers
+import { auth } from "../controllers/auth.controller";
 import {
   getTasks,
   createTask,
@@ -9,6 +13,9 @@ import {
 } from "../controllers/tasks.controller";
 
 const routes = express.Router();
+
+// Auth
+routes.post("/auth", verifyToken, auth);
 
 // Task
 routes.get("/task", getTasks);

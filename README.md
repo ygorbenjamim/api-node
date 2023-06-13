@@ -4,7 +4,7 @@ router -> controller -> service -> repository -> service -> controller -> router
 
 Controller -> Responsável por intermediar a interface com o service
 middleware -> Responsável pelas validações
-Service -> Responsável por tratar e formata os dados, fazer algum tratamento e por qualquer regra de negócio
+Service -> Responsável por tratar e formatar os dados, fazer algum tratamento e por qualquer regra de negócio
 Repository -> Acessa diretamente o banco de dados (camada mais baixa)
 
 ```sql
@@ -17,6 +17,17 @@ CREATE TABLE tasks (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   status ENUM('pendente', 'em andamento', 'concluída') NOT NULL DEFAULT 'pendente',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+```sql
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255),
+  email VARCHAR(255) UNIQUE KEY,
+  password VARCHAR(255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

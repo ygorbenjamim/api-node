@@ -1,6 +1,6 @@
 import { ResultSetHeader } from "mysql2";
 import connection from "../configs/database";
-import { Task } from "../models/tasks.model";
+import { Task } from "../interfaces/tasks.interface";
 
 const getAllRepository = async () => {
   const query = "SELECT * FROM tasks;";
@@ -20,8 +20,8 @@ const createRepository = async (task: Task) => {
 
 const deleteRepository = async (id: string) => {
   const query = "DELETE FROM tasks WHERE id = ?;";
-  const [removeTask] = await connection.execute(query, [id]);
-  const affectedRows = (removeTask as ResultSetHeader).affectedRows;
+  const [deletedTask] = await connection.execute(query, [id]);
+  const affectedRows = (deletedTask as ResultSetHeader).affectedRows;
   return { affectedRows };
 };
 

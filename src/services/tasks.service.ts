@@ -1,4 +1,4 @@
-import { ExistTask, Task } from "../models/tasks.model";
+import { ExistTask, Task } from "../interfaces/tasks.interface";
 import {
   getAllRepository,
   createRepository,
